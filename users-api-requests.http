@@ -1,0 +1,27 @@
+### Get USER by id
+GET http://localhost:8080/api/v1/users/1
+Accept: application/json
+
+
+### Create USER
+POST http://localhost:8080/api/v1/users
+Content-Type: application/json
+
+{
+  "name": "John",
+  "age": 20
+}
+
+
+### Update USER by id
+PUT http://localhost:8080/api/v1/users/1
+Content-Type: application/json
+
+{
+  "name": "Jonathan",
+  "age": 40
+}
+
+
+### Delete USER by id
+DELETE http://localhost:8080/api/v1/users/1
