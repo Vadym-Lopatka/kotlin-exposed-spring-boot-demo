@@ -1,4 +1,5 @@
 # Spring Boot Demo app with Kotlin Exposed ORM framework example
+> Exposed is a drop-in replacement for Hibernate ORM
 
 ### CRUD Users HTTP API
 The demo app follows official Exposed examples with minor improvements
