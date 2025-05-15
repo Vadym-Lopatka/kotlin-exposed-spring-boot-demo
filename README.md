@@ -7,8 +7,10 @@ H2 in memory DB + Users table auto init + Users HTTP API using Exposed to work w
 
 ### Links
 
-* Run the app, then DB available at [http://localhost:8080/h2-console:](http://localhost:8080/h2-console)
+* Run the app, then DB available at: [http://localhost:8080/h2-console:](http://localhost:8080/h2-console)
 (conn_url:`jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE`)
 
 * API examples: [users-api-requests.http](users-api-requests.http)
+
+* Official repo: https://github.com/JetBrains/Exposed
 
