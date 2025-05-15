@@ -1,6 +1,6 @@
-# Spring Boot + Kotlin Exposed ORM framework example
+# Spring Boot Demo app with Kotlin Exposed ORM framework example
 
-### CRUD Users example
+### CRUD Users HTTP API
 The demo app follows official Exposed examples with minor improvements
 
 H2 in memory DB + Users table auto init + Users HTTP API using Exposed to work with DB
