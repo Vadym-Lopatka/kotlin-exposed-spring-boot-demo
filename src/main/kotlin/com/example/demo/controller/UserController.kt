@@ -19,11 +19,9 @@ import org.springframework.web.bind.annotation.RestController
 class UserController(
     private val userService: UserService,
 ) {
-    // Read User
+
     @GetMapping("/{id}")
-    fun findUserById(
-        @PathVariable id: Long
-    ): ResponseEntity<UserResponse> {
+    fun findUserById(@PathVariable id: Long): ResponseEntity<UserResponse> {
         val user = userService.findUserById(UserId(id))
 
         return if (user != null) {
@@ -39,44 +37,17 @@ class UserController(
         }
     }
 
-    data class UserResponse(
-        val id: Long,
-        val name: String,
-        val age: Int,
-    )
-
-    // Create User
     @PostMapping
-    fun create(
-        @RequestBody form: UserCreateRequestForm
-    ): ResponseEntity<UserCreateResponse> {
-        val userId = userService.create(
-            UserCreateRequest(
-                name = form.name,
-                age = form.age,
-            )
-        )
+    fun create(@RequestBody form: UserCreateRequestForm): ResponseEntity<UserCreateResponse> {
+        val request = UserCreateRequest(name = form.name, age = form.age)
+        val userId = userService.create(request)
 
-        return ResponseEntity.ok(
-            UserCreateResponse(
-                id = userId.value,
-            )
-        )
+        return ResponseEntity.ok(UserCreateResponse(id = userId.value))
     }
 
-    data class UserCreateRequestForm(
-        val name: String,
-        val age: Int,
-    )
-
-    data class UserCreateResponse(val id: Long)
-
-    // Update User
     @PutMapping("/{id}")
-    fun update(
-        @PathVariable id: Long,
-        @RequestBody form: UserUpdateRequestForm
-    ): ResponseEntity<Unit> {
+    fun update(@PathVariable id: Long, @RequestBody form: UserUpdateRequestForm): ResponseEntity<Unit> {
+
         return userService.findUserById(UserId(id))
             ?.let {
                 userService.update(id, UserUpdateRequest(name = form.name, age = form.age))
@@ -85,18 +56,9 @@ class UserController(
             ?: ResponseEntity.notFound().build()
     }
 
-    data class UserUpdateRequestForm(
-        val name: String? = null,
-        val age: Int? = null,
-    )
-
-    // Delete User
     @DeleteMapping("/{id}")
-    fun delete(
-        @PathVariable id: Long
-    ): ResponseEntity<Unit> {
+    fun delete(@PathVariable id: Long): ResponseEntity<Unit> {
         userService.delete(UserId(id))
-
         return ResponseEntity.noContent().build()
     }
 }
