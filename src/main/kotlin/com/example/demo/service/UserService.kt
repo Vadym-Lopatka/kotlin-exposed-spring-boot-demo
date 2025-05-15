@@ -50,3 +50,6 @@ class UserService {
         UserEntity.deleteWhere { UserEntity.id eq id.value }
     }
 }
+
+data class UserCreateRequest(val name: String, val age: Int)
+data class UserUpdateRequest(val name: String? = null, val age: Int? = null)
