@@ -1,0 +1,14 @@
+# Spring Boot + Kotlin Exposed ORM framework example
+
+### CRUD Users example
+The demo app follows official Exposed examples with minor improvements
+
+H2 in memory DB + Users table auto init + Users HTTP API using Exposed to work with DB
+
+### Links
+
+* DB viewer [http://localhost:8080/h2-console:](http://localhost:8080/h2-console)
+(conn_url:`jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE`)
+
+* API examples: [users-api-requests.http](users-api-requests.http)
+
