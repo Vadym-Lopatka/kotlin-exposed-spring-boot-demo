@@ -77,15 +77,12 @@ class UserController(
         @PathVariable id: Long,
         @RequestBody form: UserUpdateRequestForm
     ): ResponseEntity<Unit> {
-        userService.update(
-            id = id,
-            request = UserUpdateRequest(
-                name = form.name,
-                age = form.age,
-            )
-        )
-
-        return ResponseEntity.ok().build()
+        return userService.findUserById(UserId(id))
+            ?.let {
+                userService.update(id, UserUpdateRequest(name = form.name, age = form.age))
+                ResponseEntity.ok().build()
+            }
+            ?: ResponseEntity.notFound().build()
     }
 
     data class UserUpdateRequestForm(
