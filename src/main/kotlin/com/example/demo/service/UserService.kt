@@ -10,8 +10,6 @@ import org.jetbrains.exposed.v1.jdbc.selectAll
 import org.jetbrains.exposed.v1.jdbc.update
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
-import kotlin.collections.firstOrNull
-import kotlin.let
 
 @Component
 @Transactional
@@ -52,13 +50,3 @@ class UserService {
         UserEntity.deleteWhere { UserEntity.id eq id.value }
     }
 }
-
-data class UserCreateRequest(
-    val name: String,
-    val age: Int,
-)
-
-data class UserUpdateRequest(
-    val name: String? = null,
-    val age: Int? = null,
-)
